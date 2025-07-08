@@ -30,3 +30,56 @@ docker-compose.override.yml
 
 # Outros
 *.DS_Store
+.chatbot-session/
+
+# Sessões do Venom-bot
+tokens/
+.venom/
+session.data.json
+*.data.json
+session/
+sessions/
+*session*/
+
+# Cache do WhatsApp Web
+.wwebjs_auth/
+.wwebjs_cache/
+wwebjs_auth/
+wwebjs_cache/
+
+# Chrome/Chromium data
+chrome-data/
+chromium-data/
+user-data-dir/
+Default/
+.config/
+
+# Arquivos de sessão específicos
+chatbot-session/
+*chatbot-session*
+session.json
+auth_info.json
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+*.pyc
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Dependency directories
+jspm_packages/

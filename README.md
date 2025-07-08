@@ -70,9 +70,27 @@ docker-compose up --build
 - O painel estará em: `http://localhost:8501`
 - O servidor WhatsApp estará em: `http://localhost:3001`
 
+### Para criação do bando de dados
+
+Com o container levantado, em um novo terminal em paralelo:
+`docker compose exec app python`
+
+Em seguida, o seguinte comando para criação do banco de dados:
+
+```
+from app.db.session import engine
+from app.db import models
+models.Base.metadata.create_all(bind=engine)
+```
+
 ---
 
 ## 📱 Integração com WhatsApp via Venom / WhatsApp Integration (venom-bot)
+
+Na pasta raíz do projeto, rode:
+
+`npm install`
+`npm audit fix --force`
 
 A integração utiliza [venom-bot](https://github.com/orkestral/venom), que permite criar bots no WhatsApp Web de forma simples e robusta.
 
