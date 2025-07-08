@@ -1,0 +1,12 @@
+2025/07/08-15:35:35.740 4aa9071 Reusing MANIFEST /Users/ken_okubo/Documents/projects/chatbot-daniel/tokens/chatbot-session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/07/08-15:35:35.741 4aa9071 Recovering log #56
+2025/07/08-15:35:35.754 4aa9071 Reusing old log /Users/ken_okubo/Documents/projects/chatbot-daniel/tokens/chatbot-session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000056.log 
+2025/07/08-15:35:37.175 4aa9071 Level-0 table #63: started
+2025/07/08-15:35:37.194 4aa9071 Level-0 table #63: 622972 bytes OK
+2025/07/08-15:35:37.197 4aa9071 Delete type=0 #56
+2025/07/08-15:35:37.197 4aa9071 Manual compaction at level-0 from '\x00\x1c\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1d\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/07/08-15:35:37.876 4aa90ce Compacting 1@1 + 2@2 files
+2025/07/08-15:35:37.906 4aa90ce Generated table #64@1: 37199 keys, 2196731 bytes
+2025/07/08-15:35:37.915 4aa90ce Generated table #65@1: 10931 keys, 566884 bytes
+2025/07/08-15:35:37.915 4aa90ce Compacted 1@1 + 2@2 files => 2763615 bytes
+2025/07/08-15:35:37.917 4aa90ce compacted to: files[ 0 0 2 0 0 0 0 ]

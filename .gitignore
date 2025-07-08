@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+.env
+.venv/
+venv/
+*.db
+
+# Node.js
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Docker
+*.pid
+*.sock
+*.tar
+docker-compose.override.yml
+
+# Streamlit
+.streamlit/
+
+# VSCode
+.vscode/
+
+# Pytest
+.pytest_cache/
+
+# Outros
+*.DS_Store
