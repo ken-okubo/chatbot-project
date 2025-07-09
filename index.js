@@ -2,7 +2,6 @@ require("dotenv").config();
 const venom = require("venom-bot");
 const axios = require("axios");
 const fs = require("fs");
-const path = require("path");
 
 // Função para limpar sessões antigas
 function clearOldSessions() {
@@ -14,6 +13,7 @@ function clearOldSessions() {
     "./session",
     "./sessions",
     "./.venom",
+    "./new-tokens",
   ];
 
   sessionsToDelete.forEach((dir) => {
@@ -28,7 +28,7 @@ function clearOldSessions() {
   });
 }
 
-// Limpar sessões antigas antes de iniciar
+// Limpar sessões antigas
 console.log("🧹 Limpando sessões antigas...");
 clearOldSessions();
 
@@ -40,48 +40,46 @@ const httpClient = axios.create({
   },
 });
 
-// Gerar nome único para sessão
-const uniqueSessionName = `session-${Date.now()}`;
+// Nome único para sessão
+const uniqueSessionName = `qr-session-${Date.now()}`;
 console.log(`🆕 Criando nova sessão: ${uniqueSessionName}`);
 
-// Criar cliente WhatsApp com configuração limpa
+// Configuração mínima para funcionar
 venom
   .create({
     session: uniqueSessionName,
-    multidevice: true,
-    headless: false,
+    headless: true, // Deixe headless mesmo para forçar terminal
     logQR: true,
-    browserArgs: ["--no-sandbox", "--disable-setuid-sandbox"],
+    qrTimeout: 0,
+    authTimeout: 0,
+    catchQR: (base64Qrimg, asciiQR, attempts, urlCode) => {
+      console.log("\n" + "🔥".repeat(20) + " QR CODE " + "🔥".repeat(20));
+      console.log(`📱 Escaneie com seu WhatsApp - Tentativa: ${attempts}`);
+      console.log("🔥".repeat(50));
+      console.log(asciiQR);
+      console.log("🔥".repeat(50));
+      if (urlCode) {
+        console.log(`🔗 URL alternativa: ${urlCode}`);
+      }
+      console.log("⏰ Aguardando scan...\n");
+    },
     statusFind: (statusSession, session) => {
       console.log(`🔄 Status: ${statusSession}`);
       console.log(`📱 Session: ${session}`);
     },
-    catchQR: (base64Qrimg, asciiQR, attempts, urlCode) => {
-      console.log("\n" + "=".repeat(60));
-      console.log("📱 ESCANEIE ESTE QR CODE COM SEU WHATSAPP:");
-      console.log(`🔄 Tentativa: ${attempts}`);
-      console.log("=".repeat(60));
-      console.log(asciiQR);
-      console.log("=".repeat(60));
-      if (urlCode) {
-        console.log(`🔗 URL: ${urlCode}`);
-      }
-      console.log("\n⏰ Aguardando leitura do QR Code...\n");
-    },
     onLoadingScreen: (percent, message) => {
-      console.log(`⏳ Carregando: ${percent}% - ${message}`);
+      console.log(`⏳ ${percent}% - ${message}`);
     },
   })
   .then((client) => {
-    console.log("✅ SESSÃO NOVA CRIADA COM SUCESSO!");
+    console.log("✅ CONECTADO COM SUCESSO!");
     start(client);
   })
   .catch((err) => {
-    console.error("❌ Erro ao criar sessão:", err);
+    console.error("❌ Erro:", err);
     process.exit(1);
   });
 
-// Resto do código permanece igual...
 function validateApiResponse(data) {
   if (!data) {
     throw new Error("Resposta vazia da API");
