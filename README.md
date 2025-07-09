@@ -43,7 +43,7 @@ chatbot/
 ### 1. Clonar o repositório / Clone the repository
 
 ```bash
-git clone https://github.com/seuusuario/chatbot-projeto.git
+git clone https://github.com/ken-okubo/chatbot-project
 cd chatbot-projeto
 ```
 
